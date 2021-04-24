@@ -1,5 +1,6 @@
 # Platform-Detector
 ##  Cross-Platform Information Detector ##
+It is a useful tool for identifying the architecture, platform type, compiler, and operating system specifications.
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-c-plus-plus.svg)](https://forthebadge.com)
 

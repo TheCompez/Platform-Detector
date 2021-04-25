@@ -20,8 +20,6 @@ int main()
   cout << "Clang compiler has been detected!\n";
 #elif defined(__COMPILER_INTEL__)
   cout << "Intel compiler has been detected!\n";
-#elif defined(__COMPILER_INTEL__)
-  cout << "Intel compiler has been detected!\n";
 #elif defined(__COMPILER_MINGW__)
   cout << "MinGW compiler has been detected!\n";
 #elif defined(__COMPILER_MINGW_64__)

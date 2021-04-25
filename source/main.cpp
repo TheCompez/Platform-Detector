@@ -15,7 +15,7 @@ int main()
   cout << "Compiler Name : "          << Detector::getCompilerName      () << endl;
   cout << "Compiler Version : "       << Detector::getCompilerVersion   () << endl;
 
-  //!Compiler Stataement
+//!Compiler Stataement
 #if defined(__COMPILER_CLANG_LLVM_)
   cout << "Clang compiler has been detected!\n";
 #elif defined(__COMPILER_INTEL__)
@@ -40,16 +40,14 @@ int main()
   cout << "Oracle compiler has been detected!\n";
 #endif
 
-  //!Platform Stataement
+//!Platform Stataement
 
 #if defined(PLATFORM_MAC)
   cout << "This is macOS platform!\n";
 #elif defined(PLATFORM_WINDOWS)
-  cout << "This is macOS platform!\n";
+  cout << "This is Windows platform!\n";
 #elif defined(PLATFORM_LINUX)
   cout << "This is Linux platform!\n";
-#elif defined(PLATFORM_WINDOWS)
-  cout << "This is Windows platform!\n";
 #elif defined(PLATFORM_FREEBSD)
   cout << "This is freeBSD platform!\n";
 #elif defined(PLATFORM_OPENBSD)

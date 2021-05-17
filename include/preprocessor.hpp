@@ -665,12 +665,14 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #   define PLATFORM_ARCH    "x86 (32-Bit)"
 #   define PLATFORM_AIX     "AIX"
 #   define PLATFORM_TYPE    "UNIX AIX"
+#   define PLATFORM_DESKTOP
 #   elif defined (X64_64bit) && defined(_AIX) || defined (__TOS_AIX__) || defined (__xlC__)
 /* IBM AIX. ------------------------------------------------- */
 #   define PLATFORM_OS      "AIX"
 #   define PLATFORM_ARCH    "x64 (64-Bit)"
 #   define PLATFORM_AIX     "AIX"
 #   define PLATFORM_TYPE    "UNIX AIX"
+#   define PLATFORM_DESKTOP
 #endif
 
 /*
@@ -686,12 +688,14 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #   define PLATFORM_ARCH   "x86 (32-Bit)"
 #   define PLATFORM_HP     "HP"
 #   define PLATFORM_TYPE   "UNIX HP-UX"
+#   define PLATFORM_DESKTOP
 #   elif defined (X64_64bit) && defined (X86_32bit) && defined(hpux) || defined(__hpux) || defined(__hpux) || defined(__hpux)
 /* Hewlett-Packard HP-UX. ----------------------------------- */
 #   define PLATFORM_OS     "HP"
 #   define PLATFORM_ARCH   "x64 (64-Bit)"
 #   define PLATFORM_HP     "HP"
 #   define PLATFORM_TYPE   "UNIX HP-UX"
+#   define PLATFORM_DESKTOP
 #endif
 
 /*
@@ -706,15 +710,17 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #   define PLATFORM_OS        "Linux"
 #   define PLATFORM_ARCH      "x86 (32-Bit)"
 #   define PLATFORM_LINUX     "Linux"
-#   define PLATFORM_DEVICE                 "Desktop"
+#   define PLATFORM_DEVICE    "Desktop"
 #   define PLATFORM_TYPE      "Unix (Linux)"
+#   define PLATFORM_DESKTOP
 #   elif defined (X64_64bit) && defined(__linux) && defined(__linux__) && defined(linux) && !defined(__ANDROID__) && !defined(ANDROID)
 /* Linux. --------------------------------------------------- */
 #   define PLATFORM_OS        "Linux"
 #   define PLATFORM_ARCH      "x64 (64-Bit)"
 #   define PLATFORM_LINUX     "Linux"
-#   define PLATFORM_DEVICE                 "Desktop"
+#   define PLATFORM_DEVICE    "Desktop"
 #   define PLATFORM_TYPE      "Unix (Linux)"
+#   define PLATFORM_DESKTOP
 #endif
 
 /*
@@ -731,36 +737,46 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #include <TargetConditionals.h>
 #if TARGET_OS_SIMULATOR == 1
 /* iOS in Xcode simulator */
+#   define PLATFORM_APPLE
 #   define PLATFORM_OS             "Apple iOS"
 #   define PLATFORM_ARCH           "x86 (32-Bit)"
 #   define PLATFORM_IOS_SIMULATOR  "iOS Simulator"
 #   define PLATFORM_TYPE           "iOS-Emulator"
 #   elif TARGET_OS_WATCH == 1
 /* iOS on iWatch. */
+#   define PLATFORM_APPLE
 #   define PLATFORM_OS             "Apple iOS"
 #   define PLATFORM_ARCH           "x86 (32-Bit)"
 #   define PLATFORM_IWATCH         "iOS (iWatch)"
 #   define PLATFORM_TYPE           "iWatch"
+#   define PLATFORM_WATCH
 #   elif TARGET_OS_TV == 1
 /* Apple TV. */
+#   define PLATFORM_APPLE
 #   define PLATFORM_OS             "Apple iOS"
 #   define PLATFORM_ARCH           "x86 (32-Bit)"
 #   define PLATFORM_APPLE_TV       "Apple (TV)"
 #   define PLATFORM_TYPE           "Apple TV"
+#   define PLATFORM_TV
 #   elif TARGET_OS_IPHONE == 1
 /* iOS on iPhone, iPad, etc. */
+#   define PLATFORM_APPLE
 #   define PLATFORM_OS             "Apple iOS"
 #   define PLATFORM_ARCH           "ARM (32-Bit)"
 #   define PLATFORM_IOS                     "iOS"
 #   define PLATFORM_DEVICE                  "Mobile"
 #   define PLATFORM_TYPE           "iPhone, iPad"
+#   define PLATFORM_TABLET
 #   elif TARGET_OS_MAC == 1
 /* macOS */
+#   define PLATFORM_APPLE
 #   define PLATFORM_OS             "macOS"
 #   define PLATFORM_ARCH           __ARCHITECTURE__
 #   define PLATFORM_MAC            "Unix(Darwin)-macOS (X11)"
 #   define PLATFORM_DEVICE         "Unix(Darwin)-macOS (X11)"
 #   define PLATFORM_TYPE           "Macintosh"
+#   define PLATFORM_APPLE
+#   define PLATFORM_DESKTOP
 #endif
 #   elif defined (X64_64bit) && defined(__APPLE__) && defined(__MACH__)
 //Detect for x64
@@ -768,32 +784,43 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #include <TargetConditionals.h>
 #   if TARGET_OS_SIMULATOR == 1
 /* iOS in Xcode simulator */
+#   define PLATFORM_APPLE
 #   define PLATFORM_OS             "Apple iOS"
 #   define PLATFORM_ARCH           "x86_64"
 #   define PLATFORM_IOS_SIMULATOR  "iOS Simulator"
 #   define PLATFORM_DEVICE         "Simulator"
 #   define PLATFORM_TYPE           "iOS-Emulator"
+#   define PLATFORM_IPHONE
+#   define PLATFORM_MOBILE
 #   elif TARGET_OS_WATCH == 1
 /* iOS on iWatch. */
+#   define PLATFORM_APPLE
 #   define PLATFORM_OS             "Apple iOS"
 #   define PLATFORM_ARCH           "x64 (64-Bit)"
 #   define PLATFORM_IWATCH         "x64 (64-Bit)"
 #   define PLATFORM_DEVICE         "iOS (iWatch)"
 #   define PLATFORM_TYPE           "iWatch"
+#   define PLATFORM_IPHONE
+#   define PLATFORM_MOBILE
 #   elif TARGET_OS_TV == 1
 /* Apple TV. */
+#   define PLATFORM_APPLE
 #   define PLATFORM_OS             "Apple iOS"
 #   define PLATFORM_ARCH           "x64 (64-Bit)"
 #   define PLATFORM_APPLE_TV       "Apple (TV)"
 #   define PLATFORM_DEVICE         "Apple (TV)"
 #   define PLATFORM_TYPE           "Apple TV"
+#   define PLATFORM_TV
 #   elif TARGET_OS_IPHONE == 1
 /* iOS on iPhone, iPad, etc. */
+#   define PLATFORM_APPLE
 #   define PLATFORM_OS             "Apple iOS"
 #   define PLATFORM_ARCH           "ARM (64-Bit)"
 #   define PLATFORM_IOS            "iOS"
 #   define PLATFORM_DEVICE         "Mobile"
 #   define PLATFORM_TYPE           "iPhone, iPad"
+#   define PLATFORM_IPAD
+#   define PLATFORM_TABLET
 #   elif TARGET_OS_MAC == 1
 /* macOS */
 #   define PLATFORM_OS             "macOS"
@@ -801,6 +828,8 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #   define PLATFORM_DEVICE         "Desktop"
 #   define PLATFORM_MAC            "Unix-macOS (X11)"
 #   define PLATFORM_TYPE           "Macintosh"
+#   define PLATFORM_MACINTOSH
+#   define PLATFORM_APPLE
 #endif
 #endif
 #   if defined(_APPLE) && defined(_LINUX) ||  defined(__APPLE__) && defined(__LINUX__)
@@ -866,12 +895,14 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #   define PLATFORM_ARCH               "x86 (32-Bit)"
 #   define PLATFORM_POSIX_WINDOWS      "POSIX under Microsoft Windows"
 #   define PLATFORM_TYPE               "POSIX under Microsoft Windows"
+#   define PLATFORM_DESKTOP
 #   elif defined (X64_64bit) && defined(__CYGWIN__) && !defined(_WIN32)
 /* Cygwin POSIX under Microsoft Windows. -------------------- */
 #   define PLATFORM_OS                 "Microsoft Windows"
 #   define PLATFORM_ARCH               "x64 (64-Bit)"
 #   define PLATFORM_POSIX_WINDOWS      "POSIX under Microsoft Windows"
 #   define PLATFORM_TYPE               "POSIX under Microsoft Windows"
+#   define PLATFORM_DESKTOP
 #endif
 
 /* FreeBSD */
@@ -881,11 +912,13 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #   define PLATFORM_ARCH        "x86 (32-Bit)"
 #   define PLATFORM_FREEBSD     "Linux (FreeBSD)"
 #   define PLATFORM_TYPE        "FreeBSD"
+#   define PLATFORM_DESKTOP
 #   elif defined (X64_64bit) && defined(__FreeBSD__) || defined(__FreeBSD)
 #   define CELL_P_FREEBSD
 #   define PLATFORM_OS          "FreeBSD"
 #   define PLATFORM_ARCH        "x64 (64-Bit)"
 #   define PLATFORM_FREEBSD     "Linux (FreeBSD)"
+#   define PLATFORM_DESKTOP
 #endif
 
 /*
@@ -902,11 +935,14 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #   define PLATFORM_ORBIS     "Linux (Orbis)"
 #   define PLATFORM_PLAYSTATION     "Playstation"
 #   define PLATFORM_TYPE      "Playstation"
+#   define PLATFORM_CONSOLE
 #   elif defined (X64_64bit) && defined(CELL_P_FREEBSD) && defined(__ORBIS__)
 #   define PLATFORM_OS        "Orbis"
 #   define PLATFORM_ARCH      "x64 (64-Bit)"
 #   define PLATFORM_ORBIS     "Linux (Orbis)"
+#   define PLATFORM_PLAYSTATION     "Playstation"
 #   define PLATFORM_TYPE      "Playstation"
+#   define PLATFORM_CONSOLE
 #endif
 
 /* OpenBSD */
@@ -920,6 +956,7 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #   define PLATFORM_ARCH      "x64 (64-Bit)"
 #   define PLATFORM_OPENBSD   "OpenBSD"
 #   define PLATFORM_TYPE      "OpenBSD"
+#   define PLATFORM_DESKTOP
 #endif
 
 
@@ -928,6 +965,7 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #   define PLATFORM_ARCH      "AMD64 (x86-64)"
 #   define PLATFORM_XBOX  "Windows 10 (Xbox)"
 #   define PLATFORM_TYPE      "Xbox"
+#   define PLATFORM_CONSOLE
 #endif
 
 
@@ -937,11 +975,13 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #   define PLATFORM_ARCH           "x86 (32-Bit)"
 #   define PLATFORM_BLACKBERRY     "NetBSD"
 #   define PLATFORM_TYPE           "NetBSD"
+#   define PLATFORM_DESKTOP
 #   elif defined (X64_64bit) && defined(__NetBSD__) || defined(__NetBSD)
 #   define PLATFORM_OS             "Unix (NetBSD)"
 #   define PLATFORM_ARCH           "x64 (64-Bit)"
 #   define PLATFORM_BLACKBERRY     "NetBSD"
 #   define PLATFORM_TYPE           "NetBSD"
+#   define PLATFORM_DESKTOP
 #endif
 
 
@@ -951,11 +991,13 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #   define PLATFORM_ARCH           "x86 (32-Bit)"
 #   define PLATFORM_BLACKBERRY     "QNX"
 #   define PLATFORM_TYPE           "Blackberry"
+#   define PLATFORM_MOBILE
 #   elif defined (X64_64bit) && defined(__QNXNTO__) || defined (__QNX__)
 #   define PLATFORM_OS             "Unix (RTOS)"
 #   define PLATFORM_ARCH           "x64 (64-Bit)"
 #   define PLATFORM_BLACKBERRY     "QNX"
 #   define PLATFORM_TYPE           "Blackberry"
+#   define PLATFORM_MOBILE
 #endif
 
 
@@ -965,11 +1007,13 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #   define PLATFORM_ARCH    "x86 (32-Bit)"
 #   define PLATFORM_VMS     "DEC (OpenVMS)"
 #   define PLATFORM_TYPE    "DEC"
+#   define PLATFORM_DESKTOP
 #   elif defined (X64_64bit) && defined(VMS) || defined (__VMS)
 #   define PLATFORM_OS      "OpenVMS"
 #   define PLATFORM_ARCH    "x64 (64-Bit)"
 #   define PLATFORM_VMS     "DEC (OpenVMS)"
 #   define PLATFORM_TYPE    "DEC"
+#   define PLATFORM_DESKTOP
 #endif
 
 /* VXWORKS variant */
@@ -978,11 +1022,13 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #   define PLATFORM_ARCH        "x86 (32-Bit)"
 #   define PLATFORM_VXWORKS     "Monolithic"
 #   define PLATFORM_TYPE        "VXWORKS"
+#   define PLATFORM_DESKTOP
 #   elif defined (X64_64bit) && defined(VXWORKS)
 #   define PLATFORM_OS          "RTOS"
 #   define PLATFORM_ARCH        "x64 (64-Bit)"
 #   define PLATFORM_VXWORKS     "Monolithic"
 #   define PLATFORM_TYPE        "VXWORKS"
+#   define PLATFORM_DESKTOP
 #endif
 
 /* Motorola 68K.  Not defined by VBCC, so user must define one of these
@@ -993,11 +1039,13 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #   define PLATFORM_ARCH        "x86 (32-Bit)"
 #   define PLATFORM_MOTOROLA    "Motorola (68K)"
 #   define PLATFORM_TYPE        "Motorola 68K"
+#   define PLATFORM_MOBILE
 #   elif defined (X64_64bit) && defined(__m68k__) || defined(M68000) || defined(__MC68K__)
 #   define PLATFORM_OS          "68K"
 #   define PLATFORM_ARCH        "x64 (64-Bit)"
 #   define PLATFORM_MOTOROLA    "Motorola (68K)"
 #   define PLATFORM_TYPE        "Motorola 68K"
+#   define PLATFORM_MOBILE
 #endif
 
 /* Ultrix */
@@ -1006,21 +1054,25 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #   define PLATFORM_ARCH       "x86 (32-Bit)"
 #   define PLATFORM_ULTRIX    "Ultrix"
 #   define PLATFORM_TYPE      "Ultrix"
+#   define PLATFORM_DESKTOP
 #   elif defined (X86_32bit) && defined(unix) && defined (vax)
 #   define PLATFORM_OS        "Ultrix Os"
 #   define PLATFORM_ARCH      "x86 (32-Bit)"
 #   define PLATFORM_ULTRIX    "Ultrix"
 #   define PLATFORM_TYPE      "Ultrix"
+#   define PLATFORM_DESKTOP
 #   elif defined (X64_64bit) && defined(ultrix) || defined (__ultrix) || defined (__ultrix__)
 #   define PLATFORM_OS        "Ultrix Os"
 #   define PLATFORM_ARCH       "x64 (64-Bit)"
 #   define PLATFORM_ULTRIX    "Ultrix"
 #   define PLATFORM_TYPE      "Ultrix"
+#   define PLATFORM_DESKTOP
 #   elif defined (X64_64bit) && defined(unix) && defined (vax)
 #   define PLATFORM_OS        "Ultrix Os"
 #   define PLATFORM_ARCH      "x64 (64-Bit)"
 #   define PLATFORM_ULTRIX    "Ultrix"
 #   define PLATFORM_TYPE      "Ultrix"
+#   define PLATFORM_DESKTOP
 #endif
 
 /* Embedded */
@@ -1055,6 +1107,7 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #   define PLATFORM_WINDOWS         "Microsoft Windows (32-Bit)"
 #   define PLATFORM_DEVICE          "Desktop"
 #   define PLATFORM_TYPE            "PC (Windows)"
+#   define PLATFORM_DESKTOP
 #elif defined(_WIN64) && !defined(_WIN32) && !defined(_WIN32_WINNT ) && !defined (WINAPI_FAMILY_PHONE_APP) && (WINAPI_FAMILY == WINAPI_FAMILY_DESKTOP_APP)
 /* Microsoft Windows (64-bit). ------------------------------ */
 #   define PLATFORM_OS              "Windows "
@@ -1063,6 +1116,7 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #   define PLATFORM_DEVICE          "Desktop"
 #   define PLATFORM_WINDOWS         "Microsoft Windows"
 #   define PLATFORM_TYPE            "PC (Windows)"
+#   define PLATFORM_DESKTOP
 /* Microsoft Phone ------------------------------ */
 #elif defined(WINAPI_FAMILY) && (WINAPI_FAMILY == WINAPI_FAMILY_APP)
 /* Microsoft Windows Store or Universal Windows Platform - (32-bit). ------------------------------ */
@@ -1072,6 +1126,7 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #   define PLATFORM_WINDOWS_UWP     "Microsoft Windows UWP (32-Bit)"
 #   define PLATFORM_DEVICE          "Desktop"
 #   define PLATFORM_TYPE            "PC (Windows)"
+#   define PLATFORM_DESKTOP
 #elif defined(WINAPI_FAMILY) && (WINAPI_FAMILY == WINAPI_FAMILY_APP) && defined(_WIN64) && !defined(_WIN32) && !defined(_WIN32_WINNT )
 /* Microsoft Windows (64-bit). ------------------------------ */
 #   define PLATFORM_OS              "Windows "
@@ -1081,6 +1136,7 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #   define PLATFORM_DEVICE          "Desktop"
 #   define PLATFORM_WINDOWS         "Microsoft Windows"
 #   define PLATFORM_TYPE            "PC (Windows)"
+#   define PLATFORM_DESKTOP
 /* Microsoft Phone ------------------------------ */
 #elif defined(WINAPI_FAMILY) && (WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP)
 /* Microsoft Windows (Phone). ------------------------------ */
@@ -1089,6 +1145,7 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #   define PLATFORM_WINDOWS_PHONE   "Windows Phone"
 #   define PLATFORM_DEVICE           "Mobile"
 #   define PLATFORM_TYPE            "Mobile (Windows Phone)"
+#   define PLATFORM_DESKTOP
 #   elif defined(_WIN64) && defined(WINAPI_FAMILY_PHONE_APP)
 /* Microsoft Windows (Phone). ------------------------------ */
 #   define PLATFORM_OS              "WindowsRT"
@@ -1096,6 +1153,7 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #   define PLATFORM_DEVICE           "Mobile"
 #   define PLATFORM_WINDOWS_PHONE   "Windows Phone"
 #   define PLATFORM_TYPE            "Mobile (Windows Phone)"
+#   define PLATFORM_DESKTOP
 #endif
 
 }

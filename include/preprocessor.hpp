@@ -1099,7 +1099,7 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
      */
 
 
-#if defined(_WIN32) || defined(_WIN32_WINNT ) && !defined(_WIN64) && !defined (WINAPI_FAMILY_PHONE_APP) && !defined(WINAPI_FAMILY) && (WINAPI_FAMILY == WINAPI_FAMILY_DESKTOP_APP)
+#if defined(_WIN32) && !defined(_WIN64) && !defined (WINAPI_FAMILY_PHONE_APP) && !defined(WINAPI_FAMILY) && (WINAPI_FAMILY == WINAPI_FAMILY_DESKTOP_APP)
 /* Microsoft Windows (32-bit). ------------------------------ */
 #   define PLATFORM_OS              "Windows"
 #   define PLATFORM_ARCH            "x86 (32-Bit)"
@@ -1108,7 +1108,7 @@ __declspec(noinline) can also be applied to constant data, to prevent the compil
 #   define PLATFORM_DEVICE          "Desktop"
 #   define PLATFORM_TYPE            "PC (Windows)"
 #   define PLATFORM_DESKTOP
-#elif defined(_WIN64) && !defined(_WIN32) && !defined(_WIN32_WINNT ) && !defined (WINAPI_FAMILY_PHONE_APP) && (WINAPI_FAMILY == WINAPI_FAMILY_DESKTOP_APP)
+#elif defined(_WIN64) && defined(_WIN32) && !defined (WINAPI_FAMILY_PHONE_APP) && (WINAPI_FAMILY == WINAPI_FAMILY_DESKTOP_APP)
 /* Microsoft Windows (64-bit). ------------------------------ */
 #   define PLATFORM_OS              "Windows "
 #   define PLATFORM_ARCH            "x64 (64-Bit)"

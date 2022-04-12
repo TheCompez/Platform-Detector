@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "include/detector.hpp"
+#include "detector.hpp"
 
 using namespace std;
 using namespace SystemInformation;

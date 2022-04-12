@@ -1,4 +1,4 @@
-#include "include/detector.hpp"
+#include "detector.hpp"
 
 #include <sstream>
 

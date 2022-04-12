@@ -22,3 +22,8 @@ ${SOURCES}
 )
 
 add_executable(Platform-Detector ${SOURCESFILE})
+
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include PRIVATE include)
+
+#Ignore unused files.
+list(APPEND CPACK_SOURCE_IGNORE_FILES /.git/ /build/ .gitignore .DS_Store)

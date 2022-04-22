@@ -23,19 +23,19 @@ namespace SystemInformation {
 
   std::string Detector::getCompilerName() noexcept
   {
-    return __COMPILER__;
+    return COMPILER;
   }
 
   std::string Detector::getCompilerVersion() noexcept
   {
     std::ostringstream strStream;
-    strStream << __COMPILER_VER__;
+    strStream << COMPILER_VER;
     return std::string(strStream.str());
   }
 
   std::string Detector::getProcessorVendor() noexcept
   {
-    return __PROCESSOR__;
+    return PROCESSOR;
   }
 
 }
